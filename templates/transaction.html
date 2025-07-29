@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Retrieve Transaction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav>
+    <h1>🧮 Smart Sum</h1>
+    <div>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/transaction">Transactions</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Retrieve Sum by Transaction ID</h2>
+
+    <form method="POST" class="form-grid">
+      <label for="txn_id">Transaction ID:</label>
+      <input type="text" id="txn_id" name="txn_id" placeholder="Enter Transaction ID" required>
+      <div></div>
+      <button class="btn-green" type="submit">Retrieve</button>
+    </form>
+
+    {% if error %}
+      <div class="result-panel">
+        <p style="color:red;">{{ error }}</p>
+      </div>
+    {% elif result is not none %}
+      <div class="result-panel">
+        <h3>Transaction Result</h3>
+        <div class="result-item">
+          <span class="result-icon">Numbers</span>
+          <span class="result-value">{{ numbers }}</span>
+        </div>
+        <div class="result-item">
+          <span class="result-icon">Sum Result</span>
+          <span class="result-value">{{ result }}</span>
+        </div>
+        <div class="result-item">
+          <span class="result-icon">Timestamp</span>
+          <span class="result-value">{{ timestamp }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

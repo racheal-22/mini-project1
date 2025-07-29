@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compute Sum</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav>
+    <h1>🧮 Smart Sum</h1>
+    <div>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/transaction">Transactions</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Enter Numbers to Compute Sum</h2>
+
+    <form method="POST" class="form-grid">
+      <label for="numbers">Numbers (comma-separated):</label>
+      <input type="text" id="numbers" name="numbers" placeholder="e.g. 10, 20, 30, 40" required>
+      <div></div>
+      <button class="btn-blue" type="submit">Compute</button>
+    </form>
+
+   {% if error %}
+  <div class="result-panel">
+    <p style="color:red;">{{ error }}</p>
+  </div>
+{% elif result is not none %}
+  <div class="result-panel">
+    <h3>Calculation Result</h3>
+    <div class="result-item">
+      <span class="result-icon">Sum Result</span>
+      <span class="result-value">{{ result }}</span>
+    </div>
+    <div class="result-item">
+      <span class="result-icon">Transaction ID</span>
+      <span class="result-value">{{ txn_id }}</span>
+    </div>
+    <div class="result-item">
+      <span class="result-icon">Timestamp</span>
+      <span class="result-value">{{ timestamp }}</span>
+    </div>
+    <div class="result-item">
+      <span class="result-icon">Status</span>
+      <span class="result-value">{{ "Cached" if cached else "" }}</span>
+    </div>
+    <a href="/transaction" class="btn-link">View This Transaction</a>
+  </div>
+{% endif %}
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Sum</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav>
+    <h1>🧮 Smart Sum</h1>
+    <div>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/transaction">Transactions</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2 class="title">Smart Sum Calculator</h2>
+    <p>Compute, Cache, and Retrieve Your Sums Instantly</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>🧮 Compute a Sum</h3>
+        <p>Enter a list of numbers to calculate the sum. Cached with transaction ID.</p>
+        <a href="/compute"><button class="btn-blue">Start Computing</button></a>
+      </div>
+
+      <div class="card">
+        <h3>🗂️ Retrieve Past Sum</h3>
+        <p>Use a transaction ID to retrieve your past sum results.</p>
+        <a href="/transaction"><button class="btn-green">Search by Transaction</button></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
